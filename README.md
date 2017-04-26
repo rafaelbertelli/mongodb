@@ -24,8 +24,9 @@ db.alunos.insert(
 )
 ```
 
-### db.alunos.find()
-- Retorna toda a coleção de dados
+### db.alunos.find().pretty()
+- Retorna toda a coleção de dados.
+Obs: O comando `pretty()` traz os dados de forma organizada
 
 ```js
 db.alunos.find()
@@ -34,8 +35,14 @@ db.alunos.find()
 - Remove item da coleção passando um parâmetro de seleção, como o _id, por exemplo.
 
 ```js
-db.aluno.remove({
+db.alunos.remove({
     "_id" : ObjectId ("56cb0002b6d75ec12f75d3b5")
 })
 ```
 
+### 
+
+
+```js
+
+```
