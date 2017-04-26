@@ -6,7 +6,7 @@
 
 ## Comandos
 
-### db.createCollection('alunos')
+#### db.createCollection('alunos')
 - Cria uma coleção de dados (como se fosse a tabela)
 
 
