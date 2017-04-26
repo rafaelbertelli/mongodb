@@ -24,3 +24,18 @@ db.alunos.insert(
 )
 ```
 
+### db.alunos.find()
+- Retorna toda a coleção de dados
+
+```js
+db.alunos.find()
+```
+### db.aluno.remove()
+- Remove item da coleção passando um parâmetro de seleção, como o _id, por exemplo.
+
+```js
+db.aluno.remove({
+    "_id" : ObjectId ("56cb0002b6d75ec12f75d3b5")
+})
+```
+
