@@ -88,7 +88,7 @@ db.alunos.remove({
 
 ### db.aluno.update()
 - Atualiza registro. 
-    -OBS: o update, por padrão troca somente o primeiro registro encontrado
+- -OBS: o update, por padrão troca somente o primeiro registro encontrado
 ```js
 db.aluno.update(
     {'curso.nome':'Sistemas de informação'},
