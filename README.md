@@ -88,18 +88,30 @@ db.alunos.remove({
 
 ### db.aluno.update()
 - Atualiza registro. 
-    - OBS: o update, por padrão troca somente o primeiro registro encontrado
 ```js
-db.aluno.update(
-    {'curso.nome':'Sistemas de informação'},
+// o update, por padrão troca somente o primeiro registro encontrado
+db.alunos.update(
+    {'curso.nome':'Sistemas da Informação'},
     {
         $set : {
-            'curso.nome':'Sistemas da informação'
+            'curso.nome':'Sistemas de Informação'
         }
     }
 )
 ```
-
+```js
+// para multiplas linhas, usar o obj { multi : true }
+db.alunos.update(
+    {'curso.nome':'Sistemas de Informação'},
+    {
+        $set : {
+            'curso.nome':'Sistemas De Informação'
+        }
+    }, {
+        multi : true
+    }
+)
+```
 
 
 
