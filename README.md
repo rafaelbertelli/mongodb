@@ -36,12 +36,45 @@ db.alunos.find({
 }).pretty()
 ```
 ```js
-// find OR
+// find $or
 db.alunos.find({
     $or : [
         {"curso.nome":"Sistemas de informação"},
         {"curso.nome":"MongoDB"}
     ]
+}).pretty()
+```
+```js
+// find $or + and (,)
+db.alunos.find({
+    $or : [
+        {"curso.nome":"Sistemas de informação"},
+        {"curso.nome":"MongoDB"},
+        {"curso.nome":"Quiropraxia"}
+    ],
+    "nome":"Monaliza"
+}).pretty()
+```
+```js
+// find $or + and (,) + $in
+db.alunos.find({
+    $or : [
+        {"curso.nome": {$in : [
+            "Sistemas de informação", 
+            "MongoDB", 
+            "Quiropraxia"
+        ]}},
+    ],
+    "nome":"Monaliza"
+}).pretty()
+```
+```js
+// find $in
+db.alunos.find({
+    'curso.nome' : { $in : [
+        'Sistemas de informação', 
+        'Quiropraxia'
+    ]}
 }).pretty()
 ```
 
@@ -57,3 +90,8 @@ db.alunos.remove({
 ```js
 
 ```
+
+
+
+
+
