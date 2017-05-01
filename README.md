@@ -86,6 +86,26 @@ db.alunos.remove({
 })
 ```
 
+### db.aluno.update()
+- Atualiza registro. 
+    -OBS: o update, por padrão troca somente o primeiro registro encontrado
+```js
+db.aluno.update(
+    {'curso.nome':'Sistemas de informação'},
+    {
+        $set : {
+            'curso.nome':'Sistemas da informação'
+        }
+    }
+)
+```
+
+
+
+
+
+
+
 ### 
 ```js
 
@@ -93,5 +113,12 @@ db.alunos.remove({
 
 
 
+db.alunos.insert({
+    'nome':'Fernando',
+    'data_nascimento':new Date(1994,03,26),
+    'notas':[10,4.5,7],
+    'curso': {'nome':'Sistemas de informação'}
+})
 
+db.alunos.find({'curso.nome':'Sistemas de informação'})
 
