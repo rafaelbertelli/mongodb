@@ -137,19 +137,17 @@ db.alunos.update(
 
 
 
+
+
+
+
+
+
+
+
+
 ### 
 ```js
 
 ```
-
-
-
-db.alunos.insert({
-    'nome':'Fernando',
-    'data_nascimento':new Date(1994,03,26),
-    'notas':[10,4.5,7],
-    'curso': {'nome':'Sistemas de informação'}
-})
-
-db.alunos.find({'curso.nome':'Sistemas de informação'})
 
