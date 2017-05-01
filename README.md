@@ -78,7 +78,7 @@ db.alunos.find({
 }).pretty()
 ```
 
-### db.aluno.remove()
+### db.alunos.remove()
 - Remove item da coleção passando um parâmetro de seleção, como o _id, por exemplo.
 ```js
 db.alunos.remove({
@@ -86,7 +86,7 @@ db.alunos.remove({
 })
 ```
 
-### db.aluno.update()
+### db.alunos.update()
 - Atualiza registro. 
 ```js
 // o update, por padrão troca somente o primeiro registro encontrado
@@ -133,6 +133,14 @@ db.alunos.update(
         }
     }
 )
+```
+
+
+### db.alunos.find().sort()
+- Ordena registros. 
+```js
+db.alunos.find().sort({'nome': 1}) // crescente
+db.alunos.find().sort({'nome': -1}) // decrescente
 ```
 
 
