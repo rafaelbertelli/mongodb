@@ -112,9 +112,28 @@ db.alunos.update(
     }
 )
 ```
-
-
-
+```js
+// atualizar array com push de somente um item
+db.alunos.update(
+    {'nome':'Felipe'},
+    {
+        $push : {
+            'notas' : 8.5
+        }
+    }
+)
+```
+```js
+// atualizar array com push de vários itens
+db.alunos.update(
+    {'nome':'Felipe'},
+    {
+        $push : {
+            'notas' : { $each : [8.5, 9.5] }
+        }
+    }
+)
+```
 
 
 
