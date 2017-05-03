@@ -134,7 +134,21 @@ db.alunos.update(
     }
 )
 ```
-
+```js
+db.alunos.update(
+    {'nome':'Fernando'},
+    { 
+        $set : {
+            'localização' : {
+                'endereço':'Rua Eponina Estrela, 68',
+                'cidade':'Mauá',
+                'coordinates':[-23.680127, -46.413804],
+                'type':'Point'
+            }
+        }
+    }
+)
+```
 
 ### db.alunos.find().sort()
 - Ordena registros. 
@@ -142,6 +156,55 @@ db.alunos.update(
 db.alunos.find().sort({'nome': 1}) // crescente
 db.alunos.find().sort({'nome': -1}) // decrescente
 ```
+
+### db.alunos.find().sort().limit()
+- Ordena registros com limite de dados.
+```js
+db.alunos.find().sort({'nome': 1}).limit(2) // TOP 3
+```
+
+### mongoimport --collection alunos --jsonArray alunos.json
+- Importar dados JSON para a collection
+```js
+// executar na cli, fora do mongo shell
+mongoimport --collection alunos --jsonArray alunos.json
+```
+
+### db.alunos.createIndex()
+- Criação de índice
+```js
+db.alunos.createIndex({
+    localizacao : '2dsphere'
+})
+```
+
+### db.alunos.aggregate()
+- Geolocalização
+```js
+db.alunos.aggregate([
+    {
+        $geoNear : {
+            near : {
+                coordinates : [-23.632169,-46.510285],
+                type : 'Point'
+            },
+            distanceField : 'distancia.calculada',
+            spherical : true
+        }
+    }
+])
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
