@@ -26,7 +26,7 @@ db.createCollection('alunos')
 
 ### db.alunos.drop()
 - Deleta a collection
-* Se droppar todas as collections, automaticamente o db será droppado
+    - Se droppar todas as collections, automaticamente o db será droppado
 ```js
 db.alunos.drop()
 ```
@@ -200,6 +200,12 @@ db.alunos.find().sort({'nome': -1}) // decrescente
 db.alunos.find().sort({'nome': 1}).limit(2) // TOP 3
 ```
 
+### db.billingCycles.find().skip(1)
+- Pula o primeiro registro
+```js
+db.billingCycles.find().skip(1)
+```
+
 ### mongoimport --collection alunos --jsonArray alunos.json
 - Importar dados JSON para a collection
 ```js
@@ -213,6 +219,17 @@ mongoimport --collection alunos --jsonArray alunos.json
 db.alunos.createIndex({
     localizacao : '2dsphere'
 })
+```
+
+### db.billingCycles.aggregate()
+- Faz agregação de vários items de uma pipeline.
+Neste caso, usarei os comandos '$project e '$group, que fazem o SELECT somente dos campos especificados e consolida os dados em um único registro, respectivamente.
+```js
+db.billingCycles.aggregate([{
+    $project: {credito: {$sum: "$credits.value"}, debito: {$sum: "$debts.value"}},
+    }, {
+    $group: {'_id': null, credito: {$sum: "$credito"}, debito: {$sum: "$debito"}}
+}])
 ```
 
 ### db.alunos.aggregate()
