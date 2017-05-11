@@ -6,16 +6,46 @@
 
 ## Comandos
 
+### db
+- Mostra db ativo
+```js
+db
+```
+
+### use db_finance
+- Acessa db mesmo que não exista fisicamente
+```js
+use db_finance
+```
+
 ### db.createCollection()
 - Cria uma coleção de dados (como se fosse a tabela)
 ```js
 db.createCollection('alunos')
 ```
 
+### db.alunos.drop()
+- Deleta a collection
+* Se droppar todas as collections, automaticamente o db será droppado
+```js
+db.alunos.drop()
+```
+
 ### db.alunos.insert()
 - Insere na coleção
 ```js
 db.alunos.insert(
+    {
+        "nome" : "Felipe", 
+        "data_nascimento" : new Date (1994,02,26)
+    }
+)
+```
+
+### db.alunos.save()
+- Insere/Atualiza na coleção *desde que passe uma chave
+```js
+db.alunos.save(
     {
         "nome" : "Felipe", 
         "data_nascimento" : new Date (1994,02,26)
@@ -76,6 +106,13 @@ db.alunos.find({
         'Quiropraxia'
     ]}
 }).pretty()
+```
+
+### db.billingCycles.find({credits:{$exists:false}}).pretty()
+- Retorna somente os elementos que existem com este valor, ou não.
+Obs: O comando `.pretty()` traz os dados de forma organizada
+```js
+db.billingCycles.find({credits:{$exists:false}}).pretty()
 ```
 
 ### db.alunos.remove()
@@ -189,8 +226,12 @@ db.alunos.aggregate([
                 type : 'Point'
             },
             distanceField : 'distancia.calculada',
-            spherical : true
+            spherical : true,
+            num : 5
         }
+    },
+    { 
+        $skip : 1
     }
 ])
 ```
