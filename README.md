@@ -31,6 +31,12 @@ db.createCollection('alunos')
 db.alunos.drop()
 ```
 
+### db.billingCycles.dropDatabase()
+- Deleta a Database
+```js
+db.billingCycles.dropDatabase()
+```
+
 ### db.alunos.insert()
 - Insere na coleção
 ```js
@@ -106,6 +112,13 @@ db.alunos.find({
         'Quiropraxia'
     ]}
 }).pretty()
+```
+```js
+// find dos elementos que existem em credits e retornando somente o name. o _id deve ser passado como zero para nao vir o ID do atributo.
+db.billingCycles.find(
+    {credits: {$exists: true}},
+    {_id:0, name:1}
+).pretty()
 ```
 
 ### db.billingCycles.find({credits:{$exists:false}}).pretty()
@@ -185,6 +198,22 @@ db.alunos.update(
         }
     }
 )
+```
+```js
+db.billingCycles.update(
+    {
+        $and: [ {month:1}, {year:2017} ]
+    },
+    {
+        $set: { credits: [ {name: "Salário", value:3500} ] }
+    }
+)
+```
+
+### db.billingCycles.count()
+- Conta os registros
+```js
+db.billingCycles.count()
 ```
 
 ### db.alunos.find().sort()
